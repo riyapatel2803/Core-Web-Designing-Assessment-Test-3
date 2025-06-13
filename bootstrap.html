@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date Interval Calculator</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+    <!-- DateTime Picker CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+    
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-primary">Date Interval Calculator</h2>
+
+        <!-- Input for Start Date -->
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <div class='input-group date' id='startPicker'>
+                <input type='text' class="form-control" id="startDate" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+
+        <!-- Input for End Date -->
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <div class='input-group date' id='endPicker'>
+                <input type='text' class="form-control" id="endDate" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+
+        <!-- Button to Calculate -->
+        <button class="btn btn-success" id="calculateBtn">Calculate Interval</button>
+
+        <!-- Display Result -->
+        <div class="result alert alert-info" id="result"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script>
+        $(function () {
+            // Initialize datetimepickers
+            $('#startPicker').datetimepicker({
+                format: 'YYYY-MM-DD'
+            });
+            $('#endPicker').datetimepicker({
+                format: 'YYYY-MM-DD',
+                useCurrent: false
+            });
+
+            // When 'Calculate' is clicked
+            $('#calculateBtn').click(function () {
+                // Get input values
+                var start = $('#startDate').val();
+                var end = $('#endDate').val();
+
+                // Convert to moment objects
+                var startDate = moment(start);
+                var endDate = moment(end);
+
+                // Check if dates are valid
+                if (!startDate.isValid() || !endDate.isValid()) {
+                    $('#result').html("Please enter valid dates.");
+                    return;
+                }
+
+                // Calculate difference
+                var diffDays = endDate.diff(startDate, 'days');
+
+                // Show result
+                $('#result').html("The interval between the two dates is <strong>" + diffDays + " days</strong>.");
+                console.log("Start Date:", start);
+                console.log("End Date:", end);
+                console.log("Difference in days:", diffDays);
+            });
+        });
+    </script>
+</body>
+</html>
