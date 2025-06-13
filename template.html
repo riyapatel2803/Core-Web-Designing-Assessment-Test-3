@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MyShop - Pastel E-Commerce</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fffaf4;
+      transition: 0.3s;
+    }
+
+    header {
+      background-color: #ffb3c6;
+      color: #333;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: #333;
+      margin-left: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .theme-toggle {
+      margin-left: auto;
+    }
+
+    .theme-toggle label {
+      color: #333;
+      cursor: pointer;
+      font-size: 14px;
+      padding-left: 10px;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .product-card {
+      background-color: #ffe5ec;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .product-card h2 {
+      font-size: 18px;
+      margin: 10px 0 5px;
+    }
+
+    .product-card p {
+      color: #a0522d;
+      font-weight: bold;
+    }
+
+    .product-card button {
+      padding: 8px 12px;
+      background-color: #f9c6d4;
+      color: #333;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .product-card button:hover {
+      background-color: #f7a8c1;
+    }
+
+    footer {
+      background-color: #ffb3c6;
+      color: #333;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    /* ===== Switch Theme: Deeper Pastel Theme ===== */
+    #pastelSwitch:checked ~ body {
+      background-color: #ffeef2;
+    }
+
+    #pastelSwitch:checked ~ body header {
+      background-color: #f7a8c1;
+    }
+
+    #pastelSwitch:checked ~ body nav a,
+    #pastelSwitch:checked ~ body .theme-toggle label,
+    #pastelSwitch:checked ~ body footer {
+      color: #4b2c2c;
+    }
+
+    #pastelSwitch:checked ~ body .product-card {
+      background-color: #fddde6;
+    }
+
+    #pastelSwitch:checked ~ body .product-card p {
+      color: #8b4e4e;
+    }
+
+    #pastelSwitch:checked ~ body .product-card button {
+      background-color: #f2b6c4;
+      color: #4b2c2c;
+    }
+
+    #pastelSwitch:checked ~ body .product-card button:hover {
+      background-color: #e39dac;
+    }
+  </style>
+</head>
+
+<!-- Theme switch using checkbox -->
+<input type="checkbox" id="pastelSwitch">
+<body>
+
+  <header>
+    <h1>MyShop</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Cart</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="theme-toggle">
+      <label for="pastelSwitch">🎨 Soft Mode</label>
+    </div>
+  </header>
+
+  <section class="products">
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="Product 1">
+      <h2>T-Shirt</h2>
+      <p>₹499</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="Product 2">
+      <h2>Shoes</h2>
+      <p>₹899</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="Product 3">
+      <h2>Watch</h2>
+      <p>₹1299</p>
+      <button>Add to Cart</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 MyShop</p>
+  </footer>
+
+</body>
+</html>
